@@ -4,8 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!--daisy and tailwind-->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body>
+<body class="min-h-screen max-w-md bg-white shadow-xl mx-auto">
+    <header class="flex justify-center items-center grid grid-col">
+        <i class="fa-brands fa-github pl-15 text-8xl"></i>
+        <h2 class="font-bold text-xl">GitHub Issues Tracker</h2>
+        <p class="text-gray-600">Sign in to manage your issues</p> 
+    </header>
+    <section class="grid grid-col w-11/12 mx-auto pt-12">
+       
+          
+            <label class="label font-bold text-black">Username</label>
+            <input  id="username" type="text" class="input w-full"  placeholder="Enter Username" />
+             <br>
+            <label class="label font-bold text-black">Password</label>
+            <input  id="password" type="password" class="input w-full" placeholder="Enter Password" />
+          
+            <button onclick="fixed()" id="btn-signin" class="btn btn-primary mt-4">Sign In</button>
+        
+    </section>
+
+    <section class="flex items-center gap-3">
+        <hr class="flex-1 text-gray-300">
+        <span class="text-gray-600">OR</span>
+        <hr class="flex-1 text-gray-300">
+
+        
+    </section>
+    <section class="flex justify-center items-center pt-10 grid grid-col">
+    <p class="text-gray-600">Demo Credentials:</p>
+    <br>
+    <p> Username: admin</p>
+        <p>
+            Password: admin123</p>
+    
+    </section>
+
+   
     <script src="script.js"></script>
 </body>
 </html>
