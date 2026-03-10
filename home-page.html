@@ -13,36 +13,52 @@
 
 </head>
 <body>
+    <!--navbar-->
+    <div class="navbar bg-white shadow-sm flex justify-between">
+        <div class="flex ">
+            <i class="fa-brands fa-github pl-12 text-5xl"></i>
+            <h2 class="pl-9 pt-2 font-bold text-2xl">GitHub Issues Tracker</h2>
+        </div>
+        <div class="flex gap-2 justify-end pr-9 w-60 ">
+            
+          <input  type="text" placeholder="Search ishues..." class="input input-bordered  w-full md:w-auto" />
+          <button class="btn btn-primary">+ New Ishue</button>
+        </div>
+    </div>
 
-    <div class="navbar bg-base-100 shadow-sm">
-        <div class="flex-1">
-          <a class="btn btn-ghost text-xl">daisyUI</a>
-        </div>
-        <div class="flex gap-2">
-          <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
-          <div class="dropdown dropdown-end">
-            <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-              <div class="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+    <!--buttons-->
+    <section class="pt-5 pb-5 pl-4 mt-14 bg-white shadow-sm w-11/12 mx-auto  ">
+        <button id="btn-all" class="btn btn-primary px-7 py-1">All</button>
+        <button id="btn-open" class="btn bg-white text-black px-7 py-1">Open</button>
+        <button id="btn-closed" class="btn bg-white text-black px-7 py-1">Closed</button>
+    </section>
+
+    <!--card-->
+    <div id="card-container" class="pt-10 w-11/12 mx-auto grid grid-cols-3 gap-6">
+     <!--   <div class="card card-border bg-white shadow-xl w-full pb-4">
+            <div class="card-actions justify-end pt-5 pr-4">
+                <button class="btn btn-soft btn-error rounded-full ">HIGH</button>
               </div>
-            </div>
-            <ul
-              tabindex="-1"
-              class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-              <li>
-                <a class="justify-between">
-                  Profile
-                  <span class="badge">New</span>
-                </a>
-              </li>
-              <li><a>Settings</a></li>
-              <li><a>Logout</a></li>
-            </ul>
-          </div>
+
+            <div class="card-body">
+              <h2 class="card-title font-bold text-xl">Fix navigation menu on mobile devices</h2>
+              <p class="text-gray-600">The navigation menu doesn't collapse properly on mobile devices...</p>
+              </div>
+              <div class="pl-5 space-x-5">
+                <button class="btn btn-soft btn-error rounded-full outline ">BUG</button>
+                <button class="btn btn-soft btn-warning rounded-full outline">HELP WANTED</button>
+              </div>
+              <br>
+              <hr class="text-gray-300">
+              <br>
+              <div class="pl-4 text-gray-600">
+                <p>#1
+                    by john_doe</p>
+                    <p>1/15/2024</p>
+              </div>
+
+          </div>-->
         </div>
-      </div>
-   <script src="home-page.html"></script> 
+   <script src="home-page.js"></script> 
 </body>
 </html>
