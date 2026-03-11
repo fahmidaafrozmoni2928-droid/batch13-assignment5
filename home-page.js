@@ -31,7 +31,7 @@ const displayAllButtons = (btns) => {
     
       createCard.classList.add('border-t-4', 'border-red-500');
     }
-    createCard.classList.add('issue-card');
+    
    createCard.innerHTML = `
    
   <div class="card card-border shadow-xl space-y-4 h-full">
@@ -140,5 +140,24 @@ cards.forEach((card) => {
 })
 
 
+const loadModal = (id) => {
+  const url = " https://phi-lab-server.vercel.app/api/v1/lab/issue/{id}"
+  fetch(url)
+  .then((res) => res.json())
+  .then((json) => {
+    displayLoadModal(json);
+    console.log(json);
+  })
+}
+
+loadModal();
+const displayLoadModal = (modals) => {
+  const modalContainer = document.getElementById('modal-container');
+  modalContainer.innerHTML = "";
+
+  modals.forEach((modal) => {
+    console.log(modal);
+  })
+}
      
    
