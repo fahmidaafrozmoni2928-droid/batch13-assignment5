@@ -17,9 +17,21 @@ const displayAllButtons = (btns) => {
 
    btns.forEach((btn) => {
     console.log(btn);
+ 
 
 
     const createCard = document.createElement('div');
+             
+    if(btn.status === "open"){
+    
+      createCard.classList.add('border-t-4', 'border-green-500');
+    }
+    else if(btn.status === "closed"){
+  
+    
+      createCard.classList.add('border-t-4', 'border-red-500');
+    }
+    createCard.classList.add('issue-card');
    createCard.innerHTML = `
    
   <div class="card card-border shadow-xl space-y-4 h-full">
@@ -59,42 +71,10 @@ const displayAllButtons = (btns) => {
 
   
   
-           
-  if(btn.status === "open"){
-    
-    createCard.classList.add('border-t-4', 'border-green-500');
-  }
-  else if(btn.status === "closed"){
-
-  
-    createCard.classList.add('border-t-4', 'border-red-500');
-  }
+ 
    });
 
-   const btnOpen = document.getElementById('btn-open');
-   const btnAll = document.getElementById('btn-all');
-   const btnClosed = document.getElementById('btn-closed');
-   btnOpen.addEventListener("click", function(){
-
-    const cards = document.querySelectorAll('#card-container > div');
-    cards.forEach((card) => {
-      if( card.classList.contains( 'border-green-500')){
-        card.style.display = "block";
-      }
-     else{
-      card.style.display = "none";
-     }
-    })
-    
-   })
-
-
-btnAll.addEventListener(("click", function() {
-  const cards = document.querySelectorAll('#card-container > div');
-  cards.forEach((card) => {
-    card.style.display = ("block");
-  })
-}))
+  
   
 }
 
@@ -116,6 +96,48 @@ function styleButtons(id){
    console.log(selected);
 }
 
+//const btnOpen = document.getElementById('btn-open');
+//const btnAll = document.getElementById('btn-all');
+//const btnClosed = document.getElementById('btn-closed');
+//open button
+
+btnOpen.addEventListener("click", function(){
+  const cards = document.querySelectorAll('#card-container > div');
+  
+ cards.forEach((card) => {
+   if( card.classList.contains( 'border-green-500')){
+     card.style.display = "";
+   }
+  else{
+   card.style.display = "none";
+  }
+ })
+ 
+})
+
+// all button
+
+btnAll.addEventListener("click", function() {
+const cards = document.querySelectorAll('#card-container > div');
+cards.forEach((card) => {
+ card.style.display = "";
+})
+})
+
+//closed button
+
+btnClosed.addEventListener("click", function(){
+  const cards = document.querySelectorAll('#card-container > div');
+cards.forEach((card) => {
+ if(card.classList.contains('border-red-500')){
+   card.style.display = "";
+ }
+ else{
+   card.style.display = "none";
+ }
+ 
+})
+})
 
 
      
