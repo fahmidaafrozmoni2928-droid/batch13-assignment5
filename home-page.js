@@ -31,26 +31,70 @@ const displayAllButtons = (btns) => {
               <h2 class="card-title font-bold text-xl">${btn.title}</h2>
               <p class="text-gray-600">${btn.description}</p>
               </div>
-              <div class="pl-5 space-x-5">
+              <div class="pl-5 space-x-5 space-y-3">
               ${btn.labels[0] ? ` <button  class="btn-bug btn btn-soft btn-error rounded-full outline "> ${btn.labels[0]} </button>`: ""}
               ${btn.labels[1] ?    `<button  class="btn-help btn btn-soft btn-warning rounded-full outline">${ btn.labels[1]} </button>`: ""}
               </div>
               <br>
               <hr class="text-gray-300">
               <br>
-              <div class="pl-4 text-gray-600">
-                <p>#1
-                    ${btn.author}</p>
+              <div class="pl-4 text-gray-600 flex">
+              <div class = "justify-start">
+                <p>#1${btn.author}
+                    </p>
+                    <p>${btn.assignee}</p>
+                    </div>
+                    <div class = " justify-end pl-3">
                     <p>${btn.createdAt}</p>
+                    <p>Updated:${btn.updatedAt}</p>
+                    </div>
               </div>
+              <p class = "">${btn.status}</p>
 
           </div>
            `
-
+          
+           
   cardContainer.appendChild(createCard);
 
+  
+  
+           
+  if(btn.status === "open"){
+    
+    createCard.classList.add('border-t-4', 'border-green-500');
+  }
+  else if(btn.status === "closed"){
+
+  
+    createCard.classList.add('border-t-4', 'border-red-500');
+  }
    });
 
+   const btnOpen = document.getElementById('btn-open');
+   const btnAll = document.getElementById('btn-all');
+   const btnClosed = document.getElementById('btn-closed');
+   btnOpen.addEventListener("click", function(){
+
+    const cards = document.querySelectorAll('#card-container > div');
+    cards.forEach((card) => {
+      if( card.classList.contains( 'border-green-500')){
+        card.style.display = "block";
+      }
+     else{
+      card.style.display = "none";
+     }
+    })
+    
+   })
+
+
+btnAll.addEventListener(("click", function() {
+  const cards = document.querySelectorAll('#card-container > div');
+  cards.forEach((card) => {
+    card.style.display = ("block");
+  })
+}))
   
 }
 
