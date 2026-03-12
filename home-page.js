@@ -21,6 +21,7 @@ const displayAllButtons = (btns) => {
 
 
     const createCard = document.createElement('div');
+   
              
     if(btn.status === "open"){
     
@@ -79,7 +80,7 @@ const displayAllButtons = (btns) => {
  
    });
 
-  
+ setTimeout(totalCount,0);
   
 }
 
@@ -109,14 +110,17 @@ function styleButtons(id){
 btnOpen.addEventListener("click", function(){
   const cards = document.querySelectorAll('#card-container > div');
   
+  
  cards.forEach((card) => {
    if( card.classList.contains( 'border-green-500')){
      card.style.display = "";
+    
    }
   else{
    card.style.display = "none";
   }
  })
+
  
 })
 
@@ -124,9 +128,15 @@ btnOpen.addEventListener("click", function(){
 
 btnAll.addEventListener("click", function() {
 const cards = document.querySelectorAll('#card-container > div');
+const allIssues = document.getElementById('all-issue');
+
 cards.forEach((card) => {
  card.style.display = "";
+  
+
 })
+
+
 })
 
 //closed button
@@ -176,4 +186,40 @@ const openModal = (modalId) => {
      modalContainer.showModal();
     })
   
+}
+
+const totalCount = () => {
+ const allIssues = document.getElementById('all-issue');
+  const cards = document.querySelectorAll('#card-container > div');
+  console.log(cards.length);
+   allIssues.innerText = cards.length; 
+   
+ 
+}
+
+const openBtn = () => {
+   const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
+   fetch(url)
+   .then((res) => res.json())
+   .then((json) => {
+    const openIssues = json.data.filter(issue => issue.status === "open");
+    displayAllButtons(openIssues);
+    console.log(openIssues)
+   })
+
+}
+
+
+
+
+const closedBtn = () => {
+  
+  const url = 'https://phi-lab-server.vercel.app/api/v1/lab/issues';
+  fetch(url)
+  .then((res) => res.json())
+  .then((json) => {
+    const closedIssues = json.data.filter(issue => issue.status === "closed")
+      displayAllButtons(closedIssues);
+      console.log(closedIssues);
+  })
 }

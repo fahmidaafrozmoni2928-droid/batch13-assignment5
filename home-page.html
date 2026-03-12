@@ -28,9 +28,9 @@
 
     <!--buttons-->
     <section class="pt-5 pb-5 pl-4 mt-14 bg-white shadow-sm w-11/12 mx-auto  ">
-        <button onclick="styleButtons('btn-all')" id="btn-all" class="btn btn-primary px-7 py-1">All</button>
-        <button onclick="styleButtons('btn-open')" id="btn-open" class="btn bg-white text-black px-7 py-1">Open</button>
-        <button onclick="styleButtons('btn-closed')" id="btn-closed" class="btn bg-white text-black px-7 py-1">Closed</button>
+        <button  onclick="styleButtons('btn-all')" id="btn-all" class="btn btn-primary px-7 py-1"> All</button>
+        <button  onclick="styleButtons('btn-open'), openBtn()" id="btn-open" class="btn bg-white text-black px-7 py-1">Open</button>
+        <button onclick="styleButtons('btn-closed'), closedBtn()" id="btn-closed" class="btn bg-white text-black px-7 py-1">Closed</button>
     </section>
    <!--total issue-->
     <section class="w-11/12 mx-auto bg-white shadow-sm mt-8 px-5 py-5 flex justify-between">
@@ -39,7 +39,7 @@
         <img src="assets/Aperture.png">
       </div>
       <div>
-        <h2 class="font-bold text-xl">50 Issues</h2>
+        <h2 class="font-bold text-xl" ><span id="all-issue">0</span>Issues</h2>
         <p class="text-gray-600">Track and manage your project issues</p>
       </div>
       </div>
