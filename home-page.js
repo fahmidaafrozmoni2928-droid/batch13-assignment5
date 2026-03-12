@@ -1,13 +1,15 @@
+let data = [];
 const allButton = () => {
     
     const url = 'https://phi-lab-server.vercel.app/api/v1/lab/issues';
     fetch(url)
     .then((res) => res.json())
     .then((json) => {
-        displayAllButtons(json.data);
-        console.log(json.data);
+      data = json.data
+        displayAllButtons(data);
+        console.log(data);
     })
-
+   
 }
 allButton();
 
@@ -79,10 +81,11 @@ const displayAllButtons = (btns) => {
   
  
    });
-
+  
  setTimeout(totalCount,0);
   
 }
+
 
 const btnAll = document.getElementById('btn-all');
 const btnOpen = document.getElementById('btn-open');
@@ -133,9 +136,9 @@ const allIssues = document.getElementById('all-issue');
 cards.forEach((card) => {
  card.style.display = "";
   
-
+ 
 })
-
+displayAllButtons(data);
 
 })
 
@@ -204,7 +207,8 @@ const openBtn = () => {
    .then((json) => {
     const openIssues = json.data.filter(issue => issue.status === "open");
     displayAllButtons(openIssues);
-    console.log(openIssues)
+    console.log(openIssues);
+    
    })
 
 }
@@ -221,5 +225,30 @@ const closedBtn = () => {
     const closedIssues = json.data.filter(issue => issue.status === "closed")
       displayAllButtons(closedIssues);
       console.log(closedIssues);
+      
   })
+  
 }
+
+const loadSearch = () => {
+  const cards = document.querySelectorAll('#card-container > div');  
+  const searchBar = document.getElementById('search-bar');
+  const searchBtn = document.getElementById('search-btn');
+  const searchText = searchBar.value;
+
+
+  const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchText}`;
+  fetch(url)
+  .then((res) => res.json())
+  .then((json) => {
+    console.log(json.data);
+    displayAllButtons(json.data);
+
+  })
+
+  searchBtn.addEventListener("click", function(){
+    loadSearch();
+    
+})
+}
+loadSearch();
