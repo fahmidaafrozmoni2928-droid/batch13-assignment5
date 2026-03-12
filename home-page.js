@@ -31,6 +31,7 @@ const displayAllButtons = (btns) => {
     
       createCard.classList.add('border-t-4', 'border-red-500');
     }
+   
     
    createCard.innerHTML = `
    
@@ -66,7 +67,11 @@ const displayAllButtons = (btns) => {
           </div>
            `
           
-           
+  createCard.addEventListener("click", () => {
+    console.log(btn.id);
+    openModal(btn.id);
+
+  })         
   cardContainer.appendChild(createCard);
 
   
@@ -140,24 +145,35 @@ cards.forEach((card) => {
 })
 
 
-const loadModal = (id) => {
-  const url = " https://phi-lab-server.vercel.app/api/v1/lab/issue/{id}"
-  fetch(url)
-  .then((res) => res.json())
-  .then((json) => {
-    displayLoadModal(json);
-    console.log(json);
-  })
+const openModal = (modalId) => {
+     console.log(modalId);
+   const modalContainer = document.getElementById('modal-container');
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${modalId}`)
+    .then((res) => res.json())
+    .then((json) => {
+      const details = json.data
+      console.log(details, "json");
+     const modalTitle = document.getElementById('modal-title');
+     const modalDescription = document.getElementById('modal-description');
+     const modalStatus = document.getElementById('modal-status');
+     const modalAssignee = document.getElementById('modal-assignee');
+     const createdAt = document.getElementById('modal-createdAt');
+     //const modalLabels = document.getElementById('modal-labels');
+     const modalAssig = document.getElementById('modal-assig');
+     const modalBug = document.getElementById('modal-bug');
+     const modalHelp = document.getElementById('modal-help');
+     const modalPrio = document.getElementById('modal-prio');
+     modalPrio.textContent = details.priority;
+     modalBug.textContent = details.labels[0];
+      modalHelp.textContent = details.labels[1];
+     modalTitle.textContent = details.title;
+     modalDescription.textContent = details.description;
+     modalStatus.textContent = details.status;
+   //  modalLabels.textContent = details.labels;
+     modalAssignee.textContent = details.assignee;
+     createdAt.textContent = details.createdAt;
+      modalAssig.textContent = "Assignee:" + details.assignee;
+     modalContainer.showModal();
+    })
+  
 }
-
-loadModal();
-const displayLoadModal = (modals) => {
-  const modalContainer = document.getElementById('modal-container');
-  modalContainer.innerHTML = "";
-
-  modals.forEach((modal) => {
-    console.log(modal);
-  })
-}
-     
-   

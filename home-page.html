@@ -32,6 +32,18 @@
         <button onclick="styleButtons('btn-open')" id="btn-open" class="btn bg-white text-black px-7 py-1">Open</button>
         <button onclick="styleButtons('btn-closed')" id="btn-closed" class="btn bg-white text-black px-7 py-1">Closed</button>
     </section>
+   <!--total issue-->
+    <section class="w-11/12 mx-auto bg-white shadow-sm mt-8">
+      <div class="flex  gap-2">
+      <div>
+        <img src="assets/Aperture.png">
+      </div>
+      <div>
+        <h2>50 Issues</h2>
+        <p>Track and manage your project issues</p>
+      </div>
+      </div>
+    </section>
 
     <!--card-->
     <div id="card-container" class="pt-10 w-11/12 mx-auto grid grid-cols-4 gap-5  ">
@@ -61,32 +73,32 @@
         </div>
 
         <!--modal-->
-        <div id="modal-container">
+        
           <!-- You can open the modal using ID.showModal() method -->
-<button class="btn" onclick="my_modal_3.showModal()">open modal</button>
-<dialog id="my_modal_3" class="modal">
+<!--<button class="btn" onclick="openModal(modalId)" >open modal</button>-->
+<dialog id="modal-container" class="modal">
   <div class="modal-box">
-    <h2 class="font-bold text-2xl">Fix broken image uploads</h2>
+    <h2 class="font-bold text-2xl" id="modal-title">Fix broken image uploads</h2>
     <div class="flex space-x-3">
-    <button class="rounded-full btn btn-success text-white">opened</button>
+    <button class="rounded-full btn btn-success text-white" id="modal-status">opened</button>
     
-      <p class="text-gray-600">. Opened by Fahim Ahmed</p>
-      <p class="text-gray-600">. 22/02/2026</p>
+      <p class="text-gray-600" id="modal-assignee">. Opened by Fahim Ahmed</p>
+      <p class="text-gray-600" id="modal-createdAt">. 22/02/2026</p>
     
   </div>
-  <div class="pl-5 space-x-5 mt-8">
-    <button class="btn btn-soft btn-error rounded-full outline ">BUG</button>
-    <button class="btn btn-soft btn-warning rounded-full outline">HELP WANTED</button>
+  <div class="pl-5 space-x-5 mt-8 " id="modal-labels">
+    <button class="btn btn-soft btn-error rounded-full outline " id="modal-bug">BUG</button>
+    <button class="btn btn-soft btn-warning rounded-full outline" id="modal-help">HELP WANTED</button>
   </div>
 
-  <p class="text-gray-600 pt-6">The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.</p>
+  <p class="text-gray-600 pt-6" id="modal-description">The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.</p>
  
   <div class="flex justify-between  bg-sky-50 mt-6">
-    <p ><span class="text-gray-600">Assignee:</span><br>
+    <p id="modal-assig"><span class="text-gray-600">Assignee:</span><br>
       Fahim Ahmed
     </p>
-    <p> <span class="text-gray-600">Priority:</span><br>
-      <button>HIGH</button>
+    <p> <span class="text-gray-600" id="modal-priority">Priority:</span><br>
+      <button class="btn bg-red-500 text-white rounded-full" id="modal-prio">HIGH</button>
     </p>
   </div>
     <form method="dialog">
@@ -104,7 +116,7 @@
 
   
 </dialog>
-        </div>
+        
    <script src="home-page.js"></script> 
 </body>
 </html>
