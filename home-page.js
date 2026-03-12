@@ -29,7 +29,7 @@ const displayAllButtons = (btns) => {
     else if(btn.status === "closed"){
   
     
-      createCard.classList.add('border-t-4', 'border-red-500');
+      createCard.classList.add('border-t-4', 'border-purple-500');
     }
    
     
@@ -134,7 +134,7 @@ cards.forEach((card) => {
 btnClosed.addEventListener("click", function(){
   const cards = document.querySelectorAll('#card-container > div');
 cards.forEach((card) => {
- if(card.classList.contains('border-red-500')){
+ if(card.classList.contains('border-purple-500')){
    card.style.display = "";
  }
  else{
