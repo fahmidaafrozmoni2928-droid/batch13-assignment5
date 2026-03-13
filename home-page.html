@@ -14,12 +14,12 @@
 </head>
 <body>
     <!--navbar-->
-    <div class="navbar bg-white shadow-sm flex justify-between">
+    <div class="navbar bg-white shadow-sm inline-block md:flex justify-between">
         <div class="flex ">
             <i class="fa-brands fa-github pl-12 text-5xl"></i>
             <h2 class="pl-9 pt-2 font-bold text-2xl">GitHub Issues Tracker</h2>
         </div>
-        <div class="flex gap-2 justify-end pr-9 w-60 ">
+        <div class="flex gap-2 justify-end pr-9 w-full ">
             
           <input  type="text" placeholder="Search ishues..." class="input input-bordered  w-full md:w-auto" id="search-bar"/>
           <button class="btn btn-primary" id="search-btn">+ New Ishue</button>
@@ -28,22 +28,22 @@
 
     <!--buttons-->
     <section class="pt-5 pb-5 pl-4 mt-14 bg-white shadow-sm w-11/12 mx-auto  ">
-        <button  onclick="styleButtons('btn-all')" id="btn-all" class="btn btn-primary px-7 py-1"> All</button>
+        <button  onclick="styleButtons('btn-all'), allButton()" id="btn-all" class="btn btn-primary px-7 py-1"> All</button>
         <button  onclick="styleButtons('btn-open'), openBtn()" id="btn-open" class="btn bg-white text-black px-7 py-1">Open</button>
         <button onclick="styleButtons('btn-closed'), closedBtn()" id="btn-closed" class="btn bg-white text-black px-7 py-1">Closed</button>
     </section>
    <!--total issue-->
-    <section class="w-11/12 mx-auto bg-white shadow-sm mt-8 px-5 py-5 flex justify-between">
+    <section class="w-11/12 mx-auto bg-white shadow-sm mt-8 px-5 py-5 inline-block md:flex justify-between">
       <div class="flex  gap-2">
-      <div>
-        <img src="assets/Aperture.png">
+      <div >
+        <img  src="assets/Aperture.png">
       </div>
-      <div>
+      <div class="">
         <h2 class="font-bold text-xl" ><span id="all-issue">0</span>Issues</h2>
         <p class="text-gray-600">Track and manage your project issues</p>
       </div>
       </div>
-      <div class="flex justify-end items-center space-x-3">
+      <div class="text-center md:flex justify-end items-center space-x-3">
       <div class="flex items-center gap-2">
         <p class="w-[12px] h-[12px] rounded-[50%] inline-block bg-green-500"></p>
         <p class="font-bold">Open</p>
@@ -56,7 +56,7 @@
     </section>
 
     <!--card-->
-    <div id="card-container" class="pt-10 w-11/12 mx-auto grid grid-cols-4 gap-5  ">
+    <div id="card-container" class="pt-10 w-11/12 mx-auto grid grid-cols-1 md:grid-cols-4 gap-5  ">
      <!--   <div class="card card-border bg-white shadow-xl w-full pb-4">
             <div class="card-actions justify-end pt-5 pr-4">
                 <button class="btn btn-soft btn-error rounded-full ">HIGH</button>
@@ -108,7 +108,7 @@
       Fahim Ahmed
     </p>
     <p> <span class="text-gray-600" id="modal-priority">Priority:</span><br>
-      <button class="btn bg-red-500 text-white rounded-full" id="modal-prio">HIGH</button>
+      <button class="btn bg-red-500 text-white rounded-full  " id="modal-prio">HIGH</button>
     </p>
   </div>
     <form method="dialog">
@@ -126,6 +126,11 @@
 
   
 </dialog>
+
+<!--spinner-->
+ <div id="spinner" class="hidden">
+  <span  class="loading loading-spinner loading-xl"></span>
+</div>
         
    <script src="home-page.js"></script> 
 </body>

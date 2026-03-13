@@ -1,18 +1,22 @@
 let data = [];
 const allButton = () => {
-    
+  document.getElementById('spinner').classList.remove("hidden");
     const url = 'https://phi-lab-server.vercel.app/api/v1/lab/issues';
     fetch(url)
     .then((res) => res.json())
     .then((json) => {
       data = json.data
         displayAllButtons(data);
-        console.log(data);
+        styleButtons('btn-all');
+       // console.log(data);
     })
    
 }
-allButton();
 
+document.addEventListener("DOMContentLoaded", function(){
+  allButton();
+  styleButtons('btn-all');
+})
 const displayAllButtons = (btns) => {
     const cardContainer = document.getElementById('card-container');
     cardContainer.innerHTML = "";
@@ -65,7 +69,7 @@ const displayAllButtons = (btns) => {
                     <p>Updated:${btn.updatedAt}</p>
                     </div>
               </div>
-              <p class = "">${btn.status}</p>
+              <p class = "hidden">${btn.status}</p>
 
           </div>
            `
@@ -91,6 +95,7 @@ const btnAll = document.getElementById('btn-all');
 const btnOpen = document.getElementById('btn-open');
 const btnClosed = document.getElementById('btn-closed')
 function styleButtons(id){
+  
      btnAll.classList.add('bg-white', 'text-black');
      btnOpen.classList.add('bg-white', 'text-black');
      btnClosed.classList.add('bg-white', 'text-black');
@@ -111,6 +116,7 @@ function styleButtons(id){
 //open button
 
 btnOpen.addEventListener("click", function(){
+  document.getElementById('spinner').classList.remove("hidden");
   const cards = document.querySelectorAll('#card-container > div');
   
   
@@ -130,6 +136,7 @@ btnOpen.addEventListener("click", function(){
 // all button
 
 btnAll.addEventListener("click", function() {
+  document.getElementById('spinner').classList.remove("hidden");
 const cards = document.querySelectorAll('#card-container > div');
 const allIssues = document.getElementById('all-issue');
 
@@ -145,6 +152,7 @@ displayAllButtons(data);
 //closed button
 
 btnClosed.addEventListener("click", function(){
+  document.getElementById('spinner').classList.remove("hidden");
   const cards = document.querySelectorAll('#card-container > div');
 cards.forEach((card) => {
  if(card.classList.contains('border-purple-500')){
@@ -179,6 +187,23 @@ const openModal = (modalId) => {
      modalPrio.textContent = details.priority;
      modalBug.textContent = details.labels[0];
       modalHelp.textContent = details.labels[1];
+
+      if(details.labels[0]){
+        modalBug.textContent = details.labels[0];
+        modalBug.style.display = "block";
+      
+      }
+      else{
+        modalBug.style.display = "none"
+      }
+      if(details.labels[1]){
+        modalHelp.textContent = details.labels[1];
+        modalHelp.style.display = "block";
+        
+      }
+      else{
+        modalHelp.style.display = "none";
+      }
      modalTitle.textContent = details.title;
      modalDescription.textContent = details.description;
      modalStatus.textContent = details.status;
@@ -192,6 +217,7 @@ const openModal = (modalId) => {
 }
 
 const totalCount = () => {
+  document.getElementById('spinner').classList.remove("hidden");
  const allIssues = document.getElementById('all-issue');
   const cards = document.querySelectorAll('#card-container > div');
   console.log(cards.length);
@@ -201,6 +227,8 @@ const totalCount = () => {
 }
 
 const openBtn = () => {
+     document.getElementById('spinner').classList.remove("hidden");
+
    const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
    fetch(url)
    .then((res) => res.json())
@@ -214,10 +242,8 @@ const openBtn = () => {
 }
 
 
-
-
 const closedBtn = () => {
-  
+  document.getElementById('spinner').classList.remove("hidden");
   const url = 'https://phi-lab-server.vercel.app/api/v1/lab/issues';
   fetch(url)
   .then((res) => res.json())
@@ -252,3 +278,5 @@ const loadSearch = () => {
 })
 }
 loadSearch();
+
+
